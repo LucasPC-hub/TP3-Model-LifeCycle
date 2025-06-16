@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Machine Learning - Breast Cancer Wisconsin</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.18.0/plotly.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.11.0/math.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>🧬 Machine Learning - Breast Cancer Wisconsin Dataset</h1>
+
+        <div class="section">
+            <h2>📊 1. Carregamento e Pré-processamento dos Dados</h2>
+            <div class="controls">
+                <button onclick="loadData()">Carregar Dataset</button>
+                <button onclick="preprocessData()" id="preprocessBtn" disabled>Pré-processar Dados</button>
+                <button onclick="showDataInfo()" id="infoBtn" disabled>Mostrar Informações</button>
+            </div>
+            <div id="dataInfo"></div>
+            <div id="dataPreview"></div>
+        </div>
+
+        <div class="section">
+            <h2>🎯 2. Classificação com K-Nearest Neighbors (KNN)</h2>
+            <div class="controls">
+                <label>Valor de K:</label>
+                <input type="number" id="kValue" value="5" min="1" max="50">
+                <button onclick="trainKNN()" id="knnBtn" disabled>Treinar KNN</button>
+                <button onclick="analyzeKPerformance()" id="kAnalysisBtn" disabled>Análise de Performance K</button>
+            </div>
+            <div id="knnResults"></div>
+            <div id="knnMetrics" class="metrics"></div>
+            <div id="kPerformancePlot" class="plot-container"></div>
+        </div>
+
+        <div class="section">
+                <h2>🌲 3. Classificação com Random Forest</h2>
+            <div class="controls">
+                <label>Número de Árvores:</label>
+                <input type="number" id="nTrees" value="10" min="1" max="100">
+                <label>Profundidade Máxima:</label>
+                <input type="number" id="maxDepth" value="10" min="1" max="50">
+                <button onclick="trainRandomForest()" id="rfBtn" disabled>Treinar Random Forest</button>
+            </div>
+            <div id="rfResults"></div>
+            <div id="rfMetrics" class="metrics"></div>
+        </div>
+
+        <div class="section">
+            <h2>🔍 4. Validação Cruzada e Comparação de Modelos</h2>
+            <div class="controls">
+                <label>Número de Folds:</label>
+                <input type="number" id="nFolds" value="5" min="2" max="10">
+                <button onclick="runCrossValidation()" id="cvBtn" disabled>Executar Validação Cruzada</button>
+            </div>
+            <div id="cvResults"></div>
+            <div id="modelComparisonPlot" class="plot-container"></div>
+        </div>
+
+        <div class="section">
+            <h2>🔧 5. Dados Sintéticos com Ruído</h2>
+            <div class="controls">
+                <label>Nível de Ruído:</label>
+                <input type="range" id="noiseLevel" min="0" max="0.5" step="0.05" value="0.1">
+                <span id="noiseLevelValue">0.1</span>
+                <label>Quantidade de Amostras:</label>
+                <input type="number" id="syntheticSamples" value="100" min="10" max="1000">
+                <button onclick="generateSyntheticData()" id="syntheticBtn" disabled>Gerar Dados Sintéticos</button>
+                <button onclick="trainWithSynthetic()" id="syntheticTrainBtn" disabled>Treinar com Dados Sintéticos</button>
+            </div>
+            <div id="syntheticResults"></div>
+            <div id="syntheticMetrics" class="metrics"></div>
+        </div>
+
+        <div class="section">
+            <h2>📈 6. Regressão Linear - Predição da Área Média</h2>
+            <div class="controls">
+                <button onclick="trainLinearRegression()" id="regressionBtn" disabled>Treinar Regressão Linear</button>
+                <button onclick="analyzeResiduals()" id="residualsBtn" disabled>Análise de Resíduos</button>
+            </div>
+            <div id="regressionResults"></div>
+            <div id="regressionMetrics" class="metrics"></div>
+            <div id="regressionPlots" class="plot-container"></div>
+            <div id="residualsPlot" class="plot-container"></div>
+        </div>
+
+        <div class="section">
+            <h2>📋 7. Comparação e Análise Final</h2>
+            <div id="finalAnalysis"></div>
+            <div id="performanceComparison" class="plot-container"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
